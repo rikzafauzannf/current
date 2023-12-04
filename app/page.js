@@ -72,7 +72,7 @@ export default function Home() {
           <h1 className="text-4xl text-center font-bold">myCurrent</h1>
 
           <div className="bg-slate-800 p-4 rounded-lg my-3 w-full">
-            <form className="grid grid-cols-6 items-center text-black w-full">
+            <form className="grid grid-cols-6 items-center text-white w-full">
               <input
                 value={newItem.name}
                 onChange={(e) =>
