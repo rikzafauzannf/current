@@ -106,7 +106,7 @@ export default function Home() {
               {items.map((item, id) => (
                 <li
                   key={item.id}
-                  className="my-4 flex justify-between w-full bg-slate-950"
+                  className="my-4 flex justify-between w-full bg-slate-950 text-white"
                 >
                   <div className="p-4 flex justify-between w-full">
                     <span className="capitalize">{item.name}</span>
