@@ -11,6 +11,7 @@ import {
   doc,
 } from "firebase/firestore";
 import { db } from "./firebase";
+import { formatCurrency } from "@/utils/formatCurrency";
 
 export default function Home() {
   const [items, setItems] = useState([
@@ -67,9 +68,9 @@ export default function Home() {
 
   return (
     <>
-      <main className="w-full h-screen flex flex-col items-center justify-center">
+      <main className="w-full flex flex-col items-center justify-center py-5">
         <div className="w-full md:max-w-lg justify-between font-mono text-sm ">
-          <h1 className="text-4xl text-center font-bold">myCurrent</h1>
+          <h1 className="text-4xl text-center font-bold">Sale Information</h1>
 
           <div className="bg-slate-800 p-4 rounded-lg my-3 w-full">
             <form className="grid grid-cols-6 items-center text-white w-full">
@@ -82,7 +83,7 @@ export default function Home() {
                 autoFocus
                 className="col-span-3 p-3 border"
                 placeholder="Items"
-              ></input>
+              />
               <input
                 value={newItem.price}
                 onChange={(e) =>
@@ -93,7 +94,7 @@ export default function Home() {
                 maxLength={12}
                 className="col-span-2 p-3 border"
                 placeholder="current - Rp."
-              ></input>
+              />
               <button
                 onClick={addItem}
                 type="submit"
@@ -103,14 +104,14 @@ export default function Home() {
               </button>
             </form>
             <ul>
-              {items.map((item, id) => (
+              {items.map((item) => (
                 <li
                   key={item.id}
                   className="my-4 flex justify-between w-full bg-slate-950 text-white"
                 >
                   <div className="p-4 flex justify-between w-full">
                     <span className="capitalize">{item.name}</span>
-                    <span>Rp.{item.price}</span>
+                    <span>Rp.{formatCurrency(item.price)}</span>
                   </div>
                   <button
                     onClick={() => deleteItem(item.id)}
@@ -126,7 +127,7 @@ export default function Home() {
             ) : (
               <div className="flex justify-between">
                 <span>Total</span>
-                <span>Rp.{total}</span>
+                <span>Rp.{formatCurrency(total)}</span>
               </div>
             )}
           </div>
